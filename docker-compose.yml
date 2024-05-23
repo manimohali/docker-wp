@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  wordpress:
+    build: .
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./db/backup.db:/var/lib/mysql/backup.db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    networks:
+      - wpsite
+
+  db:
+    image: mariadb:10.5
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    networks:
+      - wpsite
+
+networks:
+  wpsite:
+
+volumes:
+  db_data:
