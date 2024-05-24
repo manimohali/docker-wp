@@ -8,6 +8,7 @@ services:
       - 'wordpress:/var/www/html'
       - >-
         /home/ri-13/Desktop/chandramani/docker/test-pacific/wp-content/plugins/my-simple-plugin:/var/www/html/wp-content/plugins/my-simple-plugin
+      - './nginx.conf:/etc/nginx/nginx.conf'
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wordpress

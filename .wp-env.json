@@ -1,6 +1,0 @@
-{
-    "phpVersion": "7.4",
-    "plugins": ["./wp-content/plugins/my-simple-plugin","https://downloads.wordpress.org/plugin/woocommerce.zip"]
-    
-  }
-  
