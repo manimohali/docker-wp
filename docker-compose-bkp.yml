@@ -4,10 +4,10 @@ services:
   wordpress:
     image: wordpress:php8.2-fpm
     restart: always
-    volumes: &ref_1
-      - 'wordpress:/var/www/html'
-      - >-
-        /home/ri-13/Desktop/chandramani/docker/test-pacific/wp-content/plugins/my-simple-plugin:/var/www/html/wp-content/plugins/my-simple-plugin
+    volumes:
+      - wordpress:/var/www/html
+      # - ./wp-content:/var/www/html/
+      - ./wp-content/my-simple-plugin:/var/www/html/wp-content/
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wordpress
@@ -35,7 +35,8 @@ services:
     image: nginx:latest
     ports:
       - "8080:80"
-    volumes: *ref_1
+    volumes:
+      - wordpress:/var/www/html
     depends_on:
       - wordpress
     networks:
