@@ -8,7 +8,6 @@ services:
       - 'wordpress:/var/www/html'
       - >-
         /home/ri-13/Desktop/chandramani/docker/test-pacific/wp-content/plugins/my-simple-plugin:/var/www/html/wp-content/plugins/my-simple-plugin
-      - './nginx.conf:/etc/nginx/nginx.conf'
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wordpress
@@ -33,10 +32,11 @@ services:
       - wpsite
 
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
     ports:
       - "8080:80"
     volumes: *ref_1
+    entrypoint: ["/docker-entrypoint.d/init.sh"]
     depends_on:
       - wordpress
     networks:
