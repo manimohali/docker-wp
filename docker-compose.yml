@@ -13,6 +13,18 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        /* Multisite 
+        define('WP_ALLOW_MULTISITE', false );
+        define('MULTISITE', false);
+        define('SUBDOMAIN_INSTALL', false);
+        define('PATH_CURRENT_SITE', '/');
+        define('SITE_ID_CURRENT_SITE', 1);
+        define('BLOG_ID_CURRENT_SITE', 1);
+        define('DOMAIN_CURRENT_SITE', 'localhost:8090'); // TODO: change to actual domain when deploying
+        */
+        define('WP_HOME', 'http://localhost:8080');
+        define('WP_SITEURL', 'http://localhost:8080');
     depends_on:
       - db
     networks:
