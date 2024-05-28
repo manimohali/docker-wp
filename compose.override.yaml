@@ -7,5 +7,6 @@ services:
       - './server/nginx/sites-enabled:/etc/nginx/sites-enabled'
       - './server/nginx/conf.d:/etc/nginx/conf.d'
       - './init.sh:/docker-entrypoint.d/init.sh'
+      - './server/nginx/ssl:/etc/nginx/ssl'
       # - './server/nginx:/etc/nginx/'
 

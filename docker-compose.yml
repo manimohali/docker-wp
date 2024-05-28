@@ -23,8 +23,8 @@ services:
         define('BLOG_ID_CURRENT_SITE', 1);
         define('DOMAIN_CURRENT_SITE', 'localhost:8090'); // TODO: change to actual domain when deploying
         */
-        define('WP_HOME', 'http://localhost:8080');
-        define('WP_SITEURL', 'http://localhost:8080');
+        define('WP_HOME', 'https://localhost');
+        define('WP_SITEURL', 'https://localhost');
     depends_on:
       - db
     networks:
@@ -46,7 +46,8 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "8080:80"
+      # - "8080:80"
+      - "443:443"
     volumes: *ref_1
     entrypoint: ["/docker-entrypoint.d/init.sh"]
     depends_on:
