@@ -6,6 +6,7 @@ services:
     restart: always
     volumes: &ref_1
       - 'wordpress:/var/www/html'
+      - './wp-config.php:/var/www/html/wp-config.php'
       - >-
         /home/ri-13/Desktop/chandramani/docker/test-pacific/wp-content/plugins/my-simple-plugin:/var/www/html/wp-content/plugins/my-simple-plugin
     environment:
@@ -13,6 +14,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
         /* Multisite 
         define('WP_ALLOW_MULTISITE', false );
